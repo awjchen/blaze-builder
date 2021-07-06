@@ -1,0 +1,33 @@
+packages: .
+
+package blaze-builder
+  tests: true
+
+repository head.hackage.ghc.haskell.org
+   url: https://ghc.gitlab.haskell.org/head.hackage/
+   secure: True
+   key-threshold: 3
+   root-keys:
+       f76d08be13e9a61a377a85e2fb63f4c5435d40f8feb3e12eb05905edb8cdea89
+       26021a13b401500c8eb2761ca95c61f2d625bfef951b939a8124ed12ecf07329
+       7541f32a4ccca4f97aea3b22f5e593ba2c0267546016b992dfadcd2fe944e55d
+
+source-repository-package
+  type: git
+  location: https://github.com/awjchen/regex-base
+  tag: 74ccd54f3d26934d3f41aae48b215e517c38a48f
+
+source-repository-package
+  type: git
+  location: https://github.com/awjchen/regex-posix
+  tag: fd786edc1a99bbabbf62ee4c3872228542b3cf5f
+
+source-repository-package
+  type: git
+  location: https://github.com/haskellari/splitmix
+  tag: 4606188a437e6f6478fed2a20cadd716589f25ea
+
+source-repository-package
+  type: git
+  location: https://github.com/haskell/random
+  tag: 6d8b9b5f09bfd726662035c2a9687c1c23a3ebbc

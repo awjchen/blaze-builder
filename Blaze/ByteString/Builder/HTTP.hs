@@ -49,7 +49,21 @@ import Data.Monoid
 shiftr_w32 :: Word32 -> Int -> Word32
 
 #if defined(__GLASGOW_HASKELL__) && !defined(__HADDOCK__)
-shiftr_w32 (W32# w) (I# i) = W32# (w `uncheckedShiftRL#`   i)
+shiftr_w32 (W32# w) (I# i) =
+  W32# (wordToWord32Compat# (word32ToWordCompat# w `uncheckedShiftRL#` i))
+
+#if MIN_VERSION_base(4,16,0)
+word32ToWordCompat# :: Word32# -> Word#
+word32ToWordCompat# = word32ToWord#
+wordToWord32Compat# :: Word# -> Word32#
+wordToWord32Compat# = wordToWord32#
+#else
+word32ToWordCompat# :: Word# -> Word#
+word32ToWordCompat# x = x
+wordToWord32Compat# :: Word# -> Word#
+wordToWord32Compat# x = x
+#endif
+
 #else
 shiftr_w32 = shiftR
 #endif

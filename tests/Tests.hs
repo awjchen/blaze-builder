@@ -82,8 +82,10 @@ escaping2 = fromString "f &amp;&amp;&amp; g" @?= fromHtmlEscapedString "f &&& g"
 escaping3 :: Assertion
 escaping3 = fromString "&quot;&#39;" @?= fromHtmlEscapedString "\"'"
 
+#if !MIN_VERSION_bytestring(0,11,1)
 instance Show Builder where
     show = show . toLazyByteString
+#endif
 
 instance Show Write where
     show = show . fromWrite
